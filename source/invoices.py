@@ -31,3 +31,7 @@ class Invoice(TypedDict):
     items: list[str]
     meta: dict[str, Any]
     notifications: list[dict[str, Any]]
+
+
+def create_redirect_link(invoice: Invoice) -> str:
+    """Create a redirect link to the payment provider based on the invoice."""
