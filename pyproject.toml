@@ -20,6 +20,29 @@ mypy = "^1.8.0"
 
 [tool.ruff]
 target-version = "py312"
+line-length = 79
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["I001"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+known-third-party = ["fastapi", "pydantic", "sqlalchemy", "alembic"]
+known-first-party = ["database"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
 
 [tool.mypy]
 python_version = "3.12"

@@ -1,19 +1,16 @@
-from decimal import Decimal
 from sqlalchemy import (
-    ForeignKey,
-    Table,
-    Column,
-    UUID,
-    TIMESTAMP,
-    String,
     JSON,
-    Integer,
-    UniqueConstraint,
-    CheckConstraint,
-    DECIMAL,
-    Index,
+    TIMESTAMP,
+    UUID,
+    Column,
     Enum,
+    ForeignKey,
+    Index,
+    String,
+    Table,
+    UniqueConstraint,
 )
+
 from database import metadata
 
 
@@ -48,7 +45,6 @@ payments = Table(
     Index("payments_provider_idx", "provider"),
     Index("payments_provider_id_idx", "provider_id"),
 )
-
 
 notifications = Table(
     "notifications",
