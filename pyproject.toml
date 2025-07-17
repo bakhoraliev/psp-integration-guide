@@ -5,28 +5,38 @@ description = "PSP Redirect-Link Integration Guide"
 authors = ["Ilkhomidin Bakhoraliev <bakhoraliev.ilkhomidin@proton.me>"]
 license = "The Unlicense"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.13"
+
+[tool.poetry.group.gateway.dependencies]
 fastapi = "^0.116.0"
 uvicorn = "^0.35.0"
 sqlalchemy = "^2.0.41"
 alembic = "^1.16.4"
 asyncpg = "^0.30.0"
-
+aiokafka = "^0.12.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.16.1"
 black = "^25.1.0"
 isort = "^6.0.1"
 
-
-[tool.poetry.group.pylint.dependencies]
-isort = "^6.0.1"
-
 [tool.mypy]
 python_version = "3.13"
 strict = true
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+py_version=313
+line_length = 120
+known_third_party = ["fastapi", "uvicorn", "sqlalchemy", "alembic", "asyncpg"]
+default_section = "FIRSTPARTY"
+lines_after_imports = 2
 
 [build-system]
 requires = ["poetry-core"]
