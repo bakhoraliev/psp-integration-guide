@@ -11,11 +11,10 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 
-from database import metadata
+from gateway.database import metadata
 
 
-status = Enum("pending", "completed", "rejected", "refunded", name="status")
-
+status = Enum("pending", "completed", "rejected", "refunded", "errored", name="status")
 
 payments = Table(
     "payments",
@@ -41,9 +40,6 @@ payments = Table(
     ),
     # Constraints for unique payment.
     UniqueConstraint("id", "provider_id", "provider", name="unique_payment"),
-    # Indexes for faster search.
-    Index("payments_provider_idx", "provider"),
-    Index("payments_provider_id_idx", "provider_id"),
 )
 
 notifications = Table(
@@ -53,7 +49,7 @@ notifications = Table(
     Column(
         "payment_id",
         UUID,
-        ForeignKey("payments.id", ondelete="CASCADE"),
+        ForeignKey("payments.id", ondelete="RESTRICT"),
         nullable=False,
     ),
     Column("notification", JSON, nullable=False),
