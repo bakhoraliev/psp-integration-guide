@@ -9,3 +9,6 @@ non-pythonic payments providers aggregator
 - [Stripe](https://stripe.com/docs)
 - [Square](https://developer.squareup.com/)
 - [Adyen](https://docs.adyen.com/)
+
+# C4 model
+Documentation: https://c4model.com
